@@ -1,5 +1,6 @@
 package network
 
+import auth.AppIdProvider
 import bssid.BssidFetcher
 import bssid.BssidFetcherFactory
 import io.ktor.client.*
@@ -20,7 +21,8 @@ class WebSocketClient(
     private val client = HttpClient(CIO) { install(WebSockets) }
     suspend fun connect() {
         try {
-            client.webSocket(urlString = endpoint) {
+            val jwtToken = JwtClient(AppIdProvider.getAppId()).getJwt()
+            client.webSocket(urlString = endpoint + "?token=${jwtToken}") {
                 onStatusChange("Connected to attendance session. Chill now...")
                 val basePayload = """{"email":"$email","bssid":"$bssid"}""";
                 send(Frame.Text(basePayload))
