@@ -1,0 +1,2 @@
+Bundler DEB Bundle skipped because of a configuration problem: Can not find fakeroot. Reason: Cannot run program "fakeroot": error=2, No such file or directory 
+Advice to fix: Please install required packages

@@ -78,7 +78,7 @@ fun AppContent() {
         }
 
         val client = WebSocketClient(
-            endpoint = "ws://4.213.5.84:8000/attendance/wifi/ws",
+            endpoint = "ws://3.109.4.149:8080/attendance/wifi/ws",
             email = email,
             bssid = bssid,
             onStatusChange = { msg -> status = msg },
